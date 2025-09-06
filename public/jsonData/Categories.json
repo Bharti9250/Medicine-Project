@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "catImg": "/Img/Cat1.png",
+        "IMgAlt": "CategorieImg"
+    },
+    {
+        "id": 2,
+        "catImg": "/Img/Cat2.png",
+        "IMgAlt": "CategorieImg"
+    },
+    {
+        "id": 3,
+        "catImg": "/Img/Cat3.png",
+        "IMgAlt": "CategorieImg"
+    },
+    {
+        "id": 4,
+        "catImg": "/Img/Cat4.png",
+        "IMgAlt": "CategorieImg"
+    },
+    {
+        "id": 5,
+        "catImg": "/Img/Cat5.png",
+        "IMgAlt": "CategorieImg"
+    }
+]

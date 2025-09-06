@@ -1,0 +1,665 @@
+/* Header Section */
+.HaederSection .SignInBtn {
+  background-color: #0552AA;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.HaederSection .SignInBtn button {
+  color: #fff;
+  /* padding-left: 6px; */
+  padding: 5px 15px;
+}
+
+.HaederSection .SignInBtn .SignInBtnImg {
+  width: 25px;
+}
+
+.HaederSection .SignInBtn button:active {
+  border-color: #0552AA;
+  margin-right: 5px;
+}
+
+
+
+
+/* Carosule Section */
+
+.caroselDataSlide .BackcaroselDataSlide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0552AA;
+  /* height: 300px; */
+}
+
+.caroselDataSlide .BackcaroselDataSlide span {
+  font-size: 300px;
+  color: #115AAF;
+  font-weight: 600;
+  -webkit-text-stroke: 2px #ffffff26;
+}
+
+.caroselDataSlide .SliderTxt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0px 100px;
+}
+
+.SliderTxt .imgSEction {
+  width: 100%;
+  height: 450px;
+}
+
+.SliderTxt .imgSEction img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.SliderTxt .TxtSection {
+  display: grid;
+  align-items: center;
+  color: #fff;
+}
+
+.SliderTxt .TxtSection h1 {
+  font-size: 50px;
+}
+
+.SliderTxt .TxtSection h2 {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.SliderTxt .TxtSection .BrandImg {
+  justify-content: space-between;
+}
+
+.ReuseBtn {
+  display: flex;
+  align-items: center;
+}
+
+.ReuseBtn button {
+  background: #0EDBAA;
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  color: #0552aa;
+}
+
+.ReuseBtn span {
+  background: #0edbaa;
+  display: block;
+  color: #0552aa;
+  padding: 10px 13px;
+  border-radius: 40px;
+  transform: rotate(-45deg);
+  margin-left: -3px;
+  font-weight: 700;
+}
+
+
+
+/* Product Category */
+
+.AllProductList {
+  justify-content: space-between;
+}
+
+.AllProductList .CategoryProduct {
+  width: 210px;
+  height: 100%;
+}
+
+.AllProductList .CategoryProduct img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+/* Tranding Product List */
+.TrendingProducts .TrendingProductsHeader a {
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+  text-decoration: none;
+  align-items: center;
+}
+
+.TrendingProducts .TrendingProductsHeader a span {
+  margin: 4px 10px;
+  display: block;
+  transform: rotate(-45deg);
+
+}
+
+.TrendingProducts .TrendingProductsHeader a span {
+  margin: 4px 10px;
+  display: block;
+  transform: rotate(-45deg);
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsTab {
+  justify-content: space-between;
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsTab .TrendingProductsCategory {
+  color: #000;
+  background: #F4F6F6;
+  border-radius: 20px;
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsTab .TrendingProductsCategory.active {
+  color: #000;
+  background: #0EDBAA;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsCard {
+  height: 100%;
+  text-align: center;
+  position: relative;
+  border-radius: 110px 100px 10px 10px;
+  background: #F1F5F9;
+  border: none;
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardImg {
+  position: relative;
+  top: -50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardImg img {
+  width: 140px;
+}
+
+
+.TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardContent {
+  border-radius: 10px;
+  background: #fff;
+  margin: 5px;
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardContent .CardContentHeading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  color: #A4CCF4;
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardContent .CardContentHeading h2 {
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardContent .CardContentHeading h2 {
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+.TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardContent .CardContentTitle {
+  text-align: left;
+  font-size: 18px !important;
+}
+
+
+
+
+/* //Home Banner Section */
+
+.HomebannerLeftSection button {
+  background: #0EDBAA;
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  color: #0552aa;
+  margin-bottom: 20px;
+}
+
+.Homebannertxt {
+  background: #F4F6F6;
+  padding: 30px;
+  border-radius: 20px;
+  font-weight: 600;
+  position: relative
+}
+
+
+.Homebannertxt span {
+  display: block;
+  position: absolute;
+  width: 150px;
+  height: 110px;
+  bottom: 38px;
+  left: 50px;
+  background: #A1A7F3;
+  opacity: 0.55;
+  filter: blur(26px);
+  border-radius: 50%;
+  /* z-index: -1; */
+}
+
+.Homebannertxt .HomebannertxtIcon {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+}
+
+
+.Homebannertxt .HomebannerProfile {
+  display: flex;
+  align-items: center;
+}
+
+.Homebannertxt .HomebannerProfile .HomebannerProfileImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.Homebannertxt .HomebannerProfile .HomebannerProfileImg img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.Homebannertxt .HomebannerProfile .HomebannerProfileTxt h3 {
+  font-size: 18px;
+  margin-bottom: 0px;
+}
+
+
+
+
+/* Product PAge Section */
+.ProductBanner {
+  position: relative;
+}
+
+
+.ProductBanner .mobileview {
+  display: none;
+}
+
+.ProductBanner .ProductBannerTxt {
+  width: 650px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 60px;
+  align-items: center;
+  display: grid;
+  color: #0552aa;
+}
+
+.ProductBanner .ProductBannerTxt h1 {
+  font-size: 40px;
+}
+
+.ProductBanner .ProductBannerTxt p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+.ProductFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ProductFilter button {
+  border-radius: 20px;
+  border: 1px solid #E4E4E4;
+  padding: 5px 20px;
+  color: #726C6C;
+}
+
+.ProductFilterCat {
+  border: 1px solid #F3F3F3;
+  border-radius: 10px;
+  padding: 20px
+}
+
+.ProductList .ProductListCard {
+  border: 1px solid #F1F5F9;
+  border-radius: 20px;
+}
+
+.ProductList .ProductListImg {
+  width: 100%;
+  height: 250px;
+  background-color: #F1F5F9;
+  display: grid;
+  justify-content: center;
+  position: relative;
+  border-radius: 19px 19px 0px 0px;
+}
+
+.ProductList .ProductListImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ProductList .ProductListImg .WishlistTag {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 18px;
+}
+
+
+.ProductList .ProductCardBody .productTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ProductList .ProductCardBody .productTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ProductList .ProductCardBody .productTitle p {
+  color: #344054;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ProductList .ProductCardBody .ProductBtn {
+  margin-top: 15px;
+  justify-content: space-between;
+  /* gap: 5px; */
+}
+
+.ProductList .ProductCardBody .ProductBtn .BuyBtn {
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #0552AA;
+  padding: 7px 18px;
+  border-radius: 20px;
+  color: #fff;
+  /* width: 100%; */
+}
+
+.ProductList .ProductCardBody .ProductBtn .CartToBtn {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 7px 18px;
+  border-radius: 20px;
+  border: 1px solid #D0D5DD;
+  color: #344054;
+  /* width: 100%; */
+}
+
+.ProductList .ProductCardBody {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+
+
+
+/* //Single Page  */
+
+.SinglePage .SinglePageImg {
+  width: 100%;
+}
+
+.SinglePage .SinglePageSection {
+  background-color: #F1EAF7;
+  position: relative;
+  height: 100%;
+  border-radius: 20px;
+}
+
+
+.SinglePage .SinglePageSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-image: url(/Img/ProductBacImg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.SinglePage .SinglePageSection .SinglePageImg {
+  display: grid;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+}
+
+.SinglePage .SinglePageSection .SinglePageImg .Innerimg {
+  text-align: center;
+  width: 200px;
+  height: 250px;
+}
+
+.SinglePage .SinglePageSection .SinglePageImg .Innerimg img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.SinglePage .SinglePageTxt span {
+  color: #939393;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.SinglePage .SinglePageTxt span {
+  color: #939393;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.SinglePage .SinglePageTxt .SinglePagePrice .SinglePageNewPrice {
+  font-size: 40px;
+  font-weight: 600;
+  color: #00254E;
+}
+
+.SinglePage .SinglePageTxt .SinglePagePrice .SinglePageOldPrice {
+  font-size: 22px;
+  margin-left: 20px;
+  font-weight: 600;
+  text-decoration: line-through;
+  color: #00254e9e;
+}
+
+
+.SinglePage .SinglePageTxt button {
+  border: 1px solid;
+  width: 100%;
+  color: #0552AA;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.SinglePage .SinglePageTxt button span {
+  color: #0552b2;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.SinglePage .BackImg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  background-image: url(/Img/ProductBacImg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+
+.SinglePage .ProductDetail {
+  margin-top: 30px;
+}
+
+
+
+/* //Cart Page  */
+
+
+.CartSection .CartSectionBanner {
+  background-color: #F4F9FF;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+
+
+
+.CartCardSection .CartCardQuantity button {
+  padding: 5px 12px;
+  border: 1px solid #0552AA;
+  border-radius: 20px !important;
+  color: #0552AA;
+}
+
+.CartCardSection .CartCardQuantity button:hover {
+  padding: 5px 12px;
+  border: 1px solid #0552AA;
+  border-radius: 20px !important;
+  color: #fff;
+  background-color: #0552AA;
+}
+
+.CartCardSection .CartCardQuantity span {
+  padding: 8px 10px;
+  border: 1px solid #0552AA;
+  border-radius: 30px !important;
+  color: #ffffff;
+  background-color: #0552AA;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MobileView */
+
+@media only screen and (max-width: 769px) {
+  .ProductBanner .deskTopView {
+    display: none;
+  }
+
+  .ProductBanner .mobileview {
+    display: block;
+    height: 500px;
+    object-fit: fill;
+  }
+
+  .ProductBanner .mobileview img {
+    object-fit: fill;
+    height: 100%;
+  }
+
+  .ProductBanner .ProductBannerTxt {
+    width: 310px;
+    height: 100%;
+    position: absolute;
+    top: 39px;
+    left: 20px;
+    align-items: baseline;
+    display: grid;
+    color: #0552aa;
+  }
+
+  .ProductBanner .ProductBannerTxt h1 {
+    font-size: 30px;
+  }
+
+  .ProductList .ProductCardBody .ProductBtn {
+    gap: 5px;
+  }
+
+  .ProductList .ProductCardBody .ProductBtn .BuyBtn {
+    width: 100%;
+  }
+
+  .ProductList .ProductCardBody .ProductBtn .CartToBtn {
+    width: 100%;
+  }
+}
