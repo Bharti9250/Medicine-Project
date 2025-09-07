@@ -10,7 +10,7 @@ import { useCart } from '../context/Cartcontext';
 
 const Product = () => {
   const { productData, fetchAllProductData } = getAllApiData();
-  const {addtoCart, cartItem} = useCart();
+  const {addToCart, cartItem} = useCart();
 
 
   useEffect(() => {
@@ -240,7 +240,7 @@ const Product = () => {
                       </div>
                       <small className="text" style={{ color: "#98A2B3" }}>{truncateText(item?.description, 10)}</small>
                       <div className="ProductBtn d-flex">
-                        <button className="btn BuyBtn" onClick={()=>addtoCart(item)}>Buy Now</button>
+                        <button className="btn BuyBtn" onClick={()=>addToCart(item)}>Buy Now</button>
                         <button className="btn CartToBtn" >Add To Cart</button>
                       </div>
                     </Card.Body>

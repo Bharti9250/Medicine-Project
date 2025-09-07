@@ -1,106 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button, Navbar, Nav, Form, FormControl, InputGroup, } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import CartItem from '../components/cartPage/CartItem';
-import { useCart } from '../context/Cartcontext'
+import { useCart } from '../context/Cartcontext';
+import { Link } from 'react-router-dom';
 
 function Cart() {
-
-    const { cartItem } = useCart()
-
-    console.log(cartItem, "cartImte");
+    const { cartItem, removeFromCart, updateQuantity, TotalCartPrice } = useCart();
 
 
-    const [cartItems, setCartItems] = useState([
-        {
-            id: 1,
-            name: 'Medecine name with viramins',
-            description: 'Lorem ipsum dolor sit amet consectetur...',
-            details: '12 Capsule in 1 pack',
-            price: 675.00,
-            quantity: 1,
-        },
-        {
-            id: 2,
-            name: 'Medecine name with viramins',
-            description: 'Lorem ipsum dolor sit amet consectetur...',
-            details: '12 Capsule in 1 pack',
-            price: 675.00,
-            quantity: 1,
-        },
-        {
-            id: 3,
-            name: 'Medecine name with viramins',
-            description: 'Lorem ipsum dolor sit amet consectetur...',
-            details: '12 Capsule in 1 pack',
-            price: 675.00,
-            quantity: 1,
-        },
-    ]);
-
-
-    const [totalAmount, setTotalAmount] = useState(0);
-
-    useEffect(() => {
-        const newTotal = cartItem.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        setTotalAmount(newTotal);
-    }, [cartItem]);
-
-    const handleQuantityChange = (id, newQuantity) => {
-        setCartItems(currentItems =>
-            currentItems.map(item =>
-                item.id === id ? { ...item, quantity: newQuantity } : item
-            )
-        );
-
-        console.log(id,"summ");
-        
-    };
+    console.log(cartItem,"cartItem");
     
-    const handleRemoveItem = (id) => {
-        setCartItems(currentItems => currentItems.filter(item => item.id !== id));
+
+    const handleQuantityChange = (id, newQty) => {
+        updateQuantity(id, newQty);
     };
 
+    const handleRemoveItem = (id) => {
+        removeFromCart(id);
+    };
 
     return (
         <div>
-            <Container className="CartSection my-4">
-                <div className='CartSectionBanner'>
-                    <Row className="align-items-center">
-                        <Col>
-                            <div className='d-flex align-items-center gap-3'>
-                                <div style={{backgroundColor:"#73E8CC", borderRadius:"5px"}}>
-                                    <span><img src="/Img/cart.png" alt="" /></span>
+            {cartItem.length > 0 ? (
+                <Container className="CartSection my-4">
+                    <div className='CartSectionBanner'>
+                        <Row className="align-items-center">
+                            <Col>
+                                <div className='d-flex align-items-center gap-3'>
+                                    <div style={{ backgroundColor: "#73E8CC", borderRadius: "5px" }}>
+                                        <span><img src="/Img/cart.png" alt="" /></span>
+                                    </div>
+                                    <div>
+                                        <h4 style={{ color: "#127E64" }} className="fw-bold mb-0">Your Cart</h4>
+                                        <p className="text-muted mb-0">{cartItem.length} products in the cart</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 style={{color:"#127E64"}} className="fw-bold mb-0">Your Cart</h4>
-                                    <p className="text-muted mb-0">{cartItem.length} products in the cart</p>
-                                </div>
-                            </div>
+                            </Col>
+                            <Col className="text-end">
+                                <Button variant="success">View cart</Button>
+                            </Col>
+                        </Row>
+                    </div>
+
+                    {cartItem.map(item => (
+                        <CartItem
+                            key={item.id}
+                            item={item}
+                            onQuantityChange={handleQuantityChange}
+                            onRemove={handleRemoveItem}
+                        />
+                    ))}
+
+                    <hr className="my-4" />
+
+                    <Row className="mt-4">
+                        <Col xs={6} className="text-start">
+                            <h4 className="fw-bold">Total amount</h4>
                         </Col>
-                        <Col className="text-end">
-                            <Button variant="success" className="rounded-full">View cart</Button>
+                        <Col xs={6} className="text-end">
+                            <h4 className="fw-bold">₹ {TotalCartPrice().toFixed(2)}</h4>
                         </Col>
                     </Row>
+
+                    <div className='mt-5'>
+                        <Link to="/CheckoutPage">
+                            <button className='btn w-100' style={{ backgroundColor: "#198754", color: "#fff" }}>CheckOut</button>
+                        </Link>
+                    </div>
+                </Container>
+            ) : (
+                <div className="text-center my-5">
+                    <div className='EmptyCartImg' style={{width:"250px", margin:"auto"}}>
+                        <img style={{width:"100%", height:"100%", objectFit:"contain"}} src="/Img/empty-cart.png" alt="" />
+                    </div>
+                    <Link to="/product">
+                        <button className="btn mt-5" style={{background: "#0552AA", padding: "10px 50px", fontWeight: "700", color:"#fff"}}>Add Product</button>
+                    </Link>
                 </div>
-
-                {cartItem.map(item => (
-                    <CartItem key={item.id} item={item} onQuantityChange={handleQuantityChange}
-                        onRemove={handleRemoveItem} />
-                ))}
-
-                <hr className="my-4" />
-
-                <Row className="mt-4">
-                    <Col xs={6} className="text-start">
-                        <h4 className="fw-bold">Total amount</h4>
-                    </Col>
-                    <Col xs={6} className="text-end">
-                        <h4 className="fw-bold">₹ {totalAmount.toFixed(2)}</h4>
-                    </Col>
-                </Row>
-            </Container>
+            )}
         </div>
-    )
+    );
 }
 
-export default Cart
+export default Cart;
