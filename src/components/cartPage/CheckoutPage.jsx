@@ -47,10 +47,10 @@ const CheckoutPage = ({ geoLocation }) => {
     };
 
     return (
-        <Container className="my-5">
+        <Container className="AddressSection my-5">
             <Row>
                 {/* Billing Details */}
-                <Col md={7}>
+                <Col md={7} className="order-2 order-md-1">
                     <h4 className="mb-4" style={{color:"#127E64"}}>Billing details</h4>
                     <Form onSubmit={handleSubmit}>
                         <Row className="mb-3">
@@ -153,12 +153,12 @@ const CheckoutPage = ({ geoLocation }) => {
                 </Col>
 
                 {/* Order Summary */}
-                <Col md={5}>
+                <Col md={5} className="order-1 order-md-2">
                     <h4 className="mb-4" style={{color:"#127E64"}}>Your Order</h4>
 
-                    <Card className="p-3">
+                    <Card className="p-3 border-0">
                         {cartItem?.map((item, key) => (
-                            <div className="d-flex justify-content-between mb-2">
+                            <div className="d-flex justify-content-between mb-3">
                                 <div>
                                     <strong>{item.name}</strong>
                                     <p className="mb-0 text-muted" style={{ fontSize: "14px" }}>

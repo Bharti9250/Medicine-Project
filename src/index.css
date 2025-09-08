@@ -3,12 +3,13 @@
   background-color: #0552AA;
   border-radius: 20px;
   color: #fff;
+  padding: 3px 20px;
 }
 
 .HaederSection .SignInBtn button {
   color: #fff;
-  /* padding-left: 6px; */
-  padding: 5px 15px;
+  font-weight: 600;
+  /* padding: 5px 15px; */
 }
 
 .HaederSection .SignInBtn .SignInBtnImg {
@@ -19,6 +20,13 @@
   border-color: #0552AA;
   margin-right: 5px;
 }
+
+.nav .nav-item a{
+  color: #000;
+}
+
+
+
 
 
 
@@ -101,6 +109,15 @@
   transform: rotate(-45deg);
   margin-left: -3px;
   font-weight: 700;
+}
+
+
+.ReuseBtn button:hover{
+  background: #0EDBAA;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    color: #0552aa;
 }
 
 
@@ -571,14 +588,56 @@
 }
 
 .CartCardSection .CartCardQuantity span {
-  padding: 8px 10px;
-  border: 1px solid #0552AA;
-  border-radius: 30px !important;
-  color: #ffffff;
-  background-color: #0552AA;
+      border: 1px solid #0552AA;
+    border-radius: 30px !important;
+    color: #ffffff;
+    background-color: #0552AA;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    display: grid;
+    text-align: center;
 }
 
 
+.CartCardSection .CartRemoveBtn{
+  text-align: end;
+}
+.CartCardSection .CartRemoveBtn button{
+  color: #0552aa;
+}
+
+
+.CartCardSectiontemplate{
+  display: flex;
+  gap: 20px;
+}
+.CartCardSectiontemplate .CartCardSectiontemplateImg{
+  width: 100px;
+}
+.CartCardSectiontemplate .CartCardSectiontemplateImg img{
+  width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.CartCardSection .CartCard{
+  border-bottom: 1px solid #B3B3B3;
+}
+
+
+.form-control:focus{
+  box-shadow: none !important;
+}
+
+
+
+
+
+footer ul li a{
+  color: #000;
+  text-decoration: none;
+}
 
 
 
@@ -621,6 +680,62 @@
 /* MobileView */
 
 @media only screen and (max-width: 769px) {
+
+    /* hearderSection */
+  .caroselDataSlide .BackcaroselDataSlide span {
+    font-size: 200px;
+}
+
+.caroselDataSlide .SliderTxt {
+    margin: 30px;
+}
+
+
+.SliderTxt .TxtSection h1 {
+    font-size: 30px;
+}
+
+.SliderTxt .TxtSection h2 {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.SliderTxt .TxtSection .BrandImg {
+    justify-content: space-between;
+}
+
+.caroselData .HeroSectionStart{
+      width: 100%;
+    display: inline-block;
+    height: 770px;
+    background: #0552aa;
+    padding-bottom: 20px;
+}
+
+
+.BrandImg img{
+  width: 90px;
+}
+
+
+.TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardImg {
+    position: relative;
+    top: -35px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    text-align: -webkit-center;
+}
+
+
+
+
+
+
+
+
   .ProductBanner .deskTopView {
     display: none;
   }
@@ -662,4 +777,51 @@
   .ProductList .ProductCardBody .ProductBtn .CartToBtn {
     width: 100%;
   }
+
+
+  .CartSectionBanner .CartView .CartViewTxt {
+    font-size: 16px;
+  }
+
+
+  .CartSection .CartSectionBanner {
+    background-color: #F4F9FF;
+    padding: 15px 10px;
+    border-radius: 10px;
+  }
+
+
+
+  .CartCardSection .CartCardSectiontemplate{
+      display: flex;
+      gap: 20px;
+  }
+
+  .CartCardSection .CartCardSectiontemplate .CartCardSectiontemplateImg{
+      width: 100px;
+  }
+  .CartCardSection .CartCardSectiontemplate .CartCardSectiontemplateImg img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+  }
+
+  .CartCardSection .card-body{
+    padding: 0;
+  }
+
+  .CartRemoveBtn .CartRemoveBtnIcon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .CartRemoveBtn .CartRemoveBtnIcon button{
+    order: 2;
+    margin-right: 0px !important;
+    margin-bottom: 10px;
+  }
+
+
+  /* .HeaderMobileSection  */
+
 }

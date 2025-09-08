@@ -23,15 +23,15 @@ function Cart() {
         <div>
             {cartItem.length > 0 ? (
                 <Container className="CartSection my-4">
-                    <div className='CartSectionBanner'>
+                    <div className='CartSectionBanner mb-5'>
                         <Row className="align-items-center">
                             <Col>
                                 <div className='d-flex align-items-center gap-3'>
                                     <div style={{ backgroundColor: "#73E8CC", borderRadius: "5px" }}>
                                         <span><img src="/Img/cart.png" alt="" /></span>
                                     </div>
-                                    <div>
-                                        <h4 style={{ color: "#127E64" }} className="fw-bold mb-0">Your Cart</h4>
+                                    <div className='CartView'>
+                                        <h4 style={{ color: "#127E64" }} className="CartViewTxt fw-bold mb-0">Your Cart</h4>
                                         <p className="text-muted mb-0">{cartItem.length} products in the cart</p>
                                     </div>
                                 </div>
@@ -51,9 +51,9 @@ function Cart() {
                         />
                     ))}
 
-                    <hr className="my-4" />
+                    {/* <hr className="my-4" /> */}
 
-                    <Row className="mt-4">
+                    <Row className="mt-5">
                         <Col xs={6} className="text-start">
                             <h4 className="fw-bold">Total amount</h4>
                         </Col>

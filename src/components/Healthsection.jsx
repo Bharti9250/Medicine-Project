@@ -37,14 +37,6 @@ function Healthsection() {
                 ) : (
                     <p>Loading...</p>
                 )}
-
-                {/* <div className='col-md-4' >
-                    <div className='d-flex w-100' >
-                        <a href="#">
-                            <img src="/Img/card.png" alt="img" />
-                        </a>
-                    </div>
-                </div> */}
             </div>
         </div>
     )

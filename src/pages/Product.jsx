@@ -24,7 +24,7 @@ const Product = () => {
   const navigate = useNavigate()
 
   // const [isOpen, setIsOpen] = useState(true);       // for Category toggle
-  const [isFilterOpen, setIsFilterOpen] = useState(false); // for whole Filters toggle
+  const [isFilterOpen, setIsFilterOpen] = useState(true); // for whole Filters toggle
 
   // Filters state
   const [isOpen, setIsOpen] = useState(true); // default open
@@ -241,7 +241,7 @@ const Product = () => {
                       <small className="text" style={{ color: "#98A2B3" }}>{truncateText(item?.description, 10)}</small>
                       <div className="ProductBtn d-flex">
                         <button className="btn BuyBtn" onClick={()=>addToCart(item)}>Buy Now</button>
-                        <button className="btn CartToBtn" >Add To Cart</button>
+                        <button className="btn CartToBtn" onClick={()=>addToCart(item)} >Add To Cart</button>
                       </div>
                     </Card.Body>
                   </Card>

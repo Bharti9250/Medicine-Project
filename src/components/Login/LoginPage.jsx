@@ -26,7 +26,7 @@ const LoginPage = () => {
             <Form onSubmit={handleSubmit}>
              
               <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>Phone no.</Form.Label>
                 <Form.Control
                   type="email"
                   name="email"
@@ -38,7 +38,7 @@ const LoginPage = () => {
               </Form.Group>
 
              
-              <Form.Group className="mb-3" controlId="password">
+              {/* <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -48,7 +48,7 @@ const LoginPage = () => {
                   onChange={handleChange}
                   required
                 />
-              </Form.Group>
+              </Form.Group> */}
 
              
               <div className="d-grid">

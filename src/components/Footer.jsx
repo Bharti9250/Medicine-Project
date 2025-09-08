@@ -5,7 +5,7 @@ import logo from "/Img/logo.png";
 
 const Footer = () => {
   return (
-    <footer style={{ background: "#F4F6F8", padding: "40px 0" }}>
+    <footer className="" style={{ background: "#F4F6F8", padding: "40px 0" }}>
       <Container>
         <Row className="mb-4">
           <Col md={3} sm={6} xs={12} className="mb-3">
