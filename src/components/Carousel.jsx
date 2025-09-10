@@ -32,7 +32,7 @@ function Carousel() {
             {carouselData ? (
                 carouselData.map((item, i) => (
                     <Slider {...settings}>
-                        <div className='HeroSectionStart' key={i}>
+                        <div className='HeroSectionStart'>
                         {/* <h1>{i,"data"}</h1> */}
                         
                             <div className='caroselDataSlide'>

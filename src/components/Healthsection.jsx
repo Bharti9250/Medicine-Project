@@ -26,7 +26,7 @@ function Healthsection() {
             <div className='row AllProductList'>
                 {categoryData ? (
                     categoryData.map((item, i) => (
-                        <div className='col-md-4' key={i}>
+                        <div className='col-md-4  mb-3' key={i}>
                             <div className='CategoryProduct w-100' >
                                 <a href="#">
                                     <img src={item.catImg} alt="img" />

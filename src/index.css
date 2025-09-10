@@ -21,7 +21,7 @@
   margin-right: 5px;
 }
 
-.nav .nav-item a{
+.nav .nav-item a {
   color: #000;
 }
 
@@ -112,12 +112,12 @@
 }
 
 
-.ReuseBtn button:hover{
+.ReuseBtn button:hover {
   background: #0EDBAA;
-    padding: 10px 30px;
-    border-radius: 50px;
-    font-weight: 700;
-    color: #0552aa;
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  color: #0552aa;
 }
 
 
@@ -190,7 +190,7 @@
   height: 100%;
   text-align: center;
   position: relative;
-  border-radius: 110px 100px 10px 10px;
+  border-radius: 160px 160px 10px 10px;
   background: #F1F5F9;
   border: none;
 }
@@ -588,45 +588,48 @@
 }
 
 .CartCardSection .CartCardQuantity span {
-      border: 1px solid #0552AA;
-    border-radius: 30px !important;
-    color: #ffffff;
-    background-color: #0552AA;
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    display: grid;
-    text-align: center;
+  border: 1px solid #0552AA;
+  border-radius: 30px !important;
+  color: #ffffff;
+  background-color: #0552AA;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  display: grid;
+  text-align: center;
 }
 
 
-.CartCardSection .CartRemoveBtn{
+.CartCardSection .CartRemoveBtn {
   text-align: end;
 }
-.CartCardSection .CartRemoveBtn button{
+
+.CartCardSection .CartRemoveBtn button {
   color: #0552aa;
 }
 
 
-.CartCardSectiontemplate{
+.CartCardSectiontemplate {
   display: flex;
   gap: 20px;
 }
-.CartCardSectiontemplate .CartCardSectiontemplateImg{
+
+.CartCardSectiontemplate .CartCardSectiontemplateImg {
   width: 100px;
 }
-.CartCardSectiontemplate .CartCardSectiontemplateImg img{
+
+.CartCardSectiontemplate .CartCardSectiontemplateImg img {
   width: 100%;
-    height: 100%;
-    object-fit: contain;
+  height: 100%;
+  object-fit: contain;
 }
 
-.CartCardSection .CartCard{
+.CartCardSection .CartCard {
   border-bottom: 1px solid #B3B3B3;
 }
 
 
-.form-control:focus{
+.form-control:focus {
   box-shadow: none !important;
 }
 
@@ -634,7 +637,7 @@
 
 
 
-footer ul li a{
+footer ul li a {
   color: #000;
   text-decoration: none;
 }
@@ -681,44 +684,44 @@ footer ul li a{
 
 @media only screen and (max-width: 769px) {
 
-    /* hearderSection */
+  /* hearderSection */
   .caroselDataSlide .BackcaroselDataSlide span {
     font-size: 200px;
-}
+  }
 
-.caroselDataSlide .SliderTxt {
+  .caroselDataSlide .SliderTxt {
     margin: 30px;
-}
+  }
 
 
-.SliderTxt .TxtSection h1 {
+  .SliderTxt .TxtSection h1 {
     font-size: 30px;
-}
+  }
 
-.SliderTxt .TxtSection h2 {
+  .SliderTxt .TxtSection h2 {
     font-size: 16px;
     margin-top: 20px;
-}
+  }
 
-.SliderTxt .TxtSection .BrandImg {
+  .SliderTxt .TxtSection .BrandImg {
     justify-content: space-between;
-}
+  }
 
-.caroselData .HeroSectionStart{
-      width: 100%;
+  .caroselData .HeroSectionStart {
+    width: 100%;
     display: inline-block;
     height: 770px;
     background: #0552aa;
     padding-bottom: 20px;
-}
+  }
 
 
-.BrandImg img{
-  width: 90px;
-}
+  .BrandImg img {
+    width: 90px;
+  }
 
 
-.TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardImg {
+  .TrendingProducts .TrendingProductsList .TrendingProductsCard .TrendingProductsCardImg {
     position: relative;
     top: -35px;
     bottom: 0;
@@ -727,7 +730,7 @@ footer ul li a{
     width: 100%;
     height: 100%;
     text-align: -webkit-center;
-}
+  }
 
 
 
@@ -792,30 +795,32 @@ footer ul li a{
 
 
 
-  .CartCardSection .CartCardSectiontemplate{
-      display: flex;
-      gap: 20px;
+  .CartCardSection .CartCardSectiontemplate {
+    display: flex;
+    gap: 20px;
   }
 
-  .CartCardSection .CartCardSectiontemplate .CartCardSectiontemplateImg{
-      width: 100px;
-  }
-  .CartCardSection .CartCardSectiontemplate .CartCardSectiontemplateImg img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover
+  .CartCardSection .CartCardSectiontemplate .CartCardSectiontemplateImg {
+    width: 100px;
   }
 
-  .CartCardSection .card-body{
+  .CartCardSection .CartCardSectiontemplate .CartCardSectiontemplateImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+  }
+
+  .CartCardSection .card-body {
     padding: 0;
   }
 
-  .CartRemoveBtn .CartRemoveBtnIcon{
+  .CartRemoveBtn .CartRemoveBtnIcon {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .CartRemoveBtn .CartRemoveBtnIcon button{
+
+  .CartRemoveBtn .CartRemoveBtnIcon button {
     order: 2;
     margin-right: 0px !important;
     margin-bottom: 10px;
@@ -823,5 +828,46 @@ footer ul li a{
 
 
   /* .HeaderMobileSection  */
+
+
+
+  .TrendingProducts .TrendingProductsHeader h4 {
+    font-size: 16px;
+    width: 170px;
+  }
+
+
+  .MobileViewTab .MobileViewTabSelect.active a{
+    color: #000;
+    background: #0EDBAA;
+    border-radius: 20px;
+    font-weight: 600;
+    text-align: center;
+    /* margin: 0px 20px;a */
+  }
+
+
+  .MobileViewTab .MobileViewTabSelect a{
+    padding: 5px 26px;
+    color: #000;
+    background: #F4F6F6;
+    border-radius: 20px;
+  }
+
+  .Homebannertxt{
+    padding: 20px;
+    
+  }
+
+
+  .HomebannerLeftSection h4{
+    font-size: 30px !important;
+    margin-bottom: 20px;
+  }
+
+
+  .HomebannerSection .Homebanner{
+    margin-top: 20px;
+  }
 
 }

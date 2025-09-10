@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Nav, Tab, Row, Col, Card } from "react-bootstrap";
 import { FaArrowRight } from "react-icons/fa6";
 import { IoMdStar } from "react-icons/io";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { getAllApiData } from "../context/Datacontext";
 
 const categories = [
     "Vitamins & Nutrition",
@@ -36,13 +37,22 @@ const products = [
 
 export default function TrendingProducts() {
     const [activeTab, setActiveTab] = useState("Vitamins & Nutrition");
+    const { subCategory, fetchSubCategory } = getAllApiData();
+
+     useEffect(() => {
+        fetchSubCategory();         
+      }, []);
+
+      console.log(subCategory,"subCategorysubCategorysubCategorysubCategory");
+      
+
 
     // Slider settings for mobile
     const sliderSettings = {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 2,
+        // slidesToShow: 2,
         slidesToScroll: 1,
         arrows: false,
         responsive: [
@@ -61,12 +71,13 @@ export default function TrendingProducts() {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 2.5, // show 2 tabs + partial next
+        // slidesToShow: 2,
+        variableWidth: true,
         slidesToScroll: 1,
         arrows: true,
         responsive: [
             {
-                breakpoint: 576, // mobile
+                breakpoint: 576,
                 settings: { slidesToShow: 2.5 },
             },
         ],
@@ -104,12 +115,12 @@ export default function TrendingProducts() {
 
 
                     {/* Mobile Tabs Slider */}
-                    <div className="d-md-none mb-5">
+                    <div className="MobileViewTab d-md-none mb-5">
                         <Slider {...mobileTabSettings}>
                             {categories.map((cat) => (
-                                <div key={cat} className="px-1">
+                                <div key={cat} className={`px-1 MobileViewTabSelect ${activeTab === cat ? "active" : ""}`} >
                                     <Nav.Link
-                                        className={`TrendingProductsCategory ${activeTab === cat ? "active" : ""}`}
+                                        // className={`TrendingProductsCategory ${activeTab === cat ? "active" : ""}`}
                                         eventKey={cat}
                                         onClick={() => setActiveTab(cat)}
                                     >

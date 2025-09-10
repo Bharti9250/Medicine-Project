@@ -9,13 +9,17 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from '../context/Cartcontext';
 
 const Product = () => {
-  const { productData, fetchAllProductData } = getAllApiData();
+  const { productData, fetchMainCategoryById } = getAllApiData();
   const {addToCart, cartItem} = useCart();
 
 
   useEffect(() => {
-    fetchAllProductData();
+    fetchMainCategoryById();
   }, []);
+
+
+  console.log(productData,"Bahrti");
+  
 
 
 
@@ -63,19 +67,9 @@ const Product = () => {
     const brandMatch = brandFilter.length === 0 || brandFilter.includes(item?.brand);
     const priceMatch = Number(item.price) >= priceFilter[0] && Number(item.price) <= priceFilter[1];
 
-    // console.log(categoryMatch,"category");
-    // console.log(brandMatch,"Brand");
-    // console.log(priceMatch, "priceMatch");
-    // console.log(item.price,"productData");
-
-
 
     return categoryMatch && brandMatch && priceMatch;
   });
-  // console.log("Start");
-  // console.log(filteredProducts, "filterpriduvt");
-  // console.log(productData, "productData");
-  // console.log("Last");
 
 
   // Pagination

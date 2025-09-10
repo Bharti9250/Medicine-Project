@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Row, Col, Form, Button, Nav, Offcanvas } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Nav, Offcanvas, NavDropdown, Accordion } from "react-bootstrap";
 import { FaSearch, FaShoppingCart, FaGift } from "react-icons/fa";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
@@ -8,8 +8,13 @@ import logo from "../assets/logo.png";
 import axios from 'axios'
 import { useCart } from '../context/Cartcontext';
 import { Link } from 'react-router-dom';
+import { getAllApiData } from '../context/Datacontext'
 
 const Header = () => {
+    const { maniCategory, fetchMailCategory, setSelectedSubCategoryId } = getAllApiData();
+
+    console.log(maniCategory, "productDataproductDataproductDataproductData");
+
     const { cartItem } = useCart();
     const [showMenu, setShowMenu] = useState(false);
     const [location, setLocation] = useState("Detecting...");
@@ -49,15 +54,26 @@ const Header = () => {
         );
     };
 
-    // Load once on mount
+
+    function saveSubCateegoryKey(id) {
+        setSelectedSubCategoryId(id)
+        console.log(id, "isfuhf");
+
+    }
+
+
+
+
     useEffect(() => {
         getLocation();
+        fetchMailCategory();
     }, []);
 
     return (
-        <header className="HaederSection border-bottom bg-white shadow-sm">
+        
+        <header className="HaederSection border-bottom bg-white shadow-sm sticky-top">
             <Container className="py-2">
-                {/* ✅ Desktop Header */}
+                {/* Desktop Header */}
                 <Row className="align-items-center d-none d-md-flex">
 
                     {/* Location + Search */}
@@ -112,12 +128,7 @@ const Header = () => {
                 </Row>
 
 
-
-
-
-
-
-                {/* ✅ Mobile Header */}
+                {/* Mobile Header */}
                 <div className='HeaderMobileSection'>
                     <Row className="align-items-center d-flex d-md-none my-3 justify-content-between">
 
@@ -167,33 +178,65 @@ const Header = () => {
                 </div>
             </Container>
 
-            {/* ✅ Sidebar / Drawer for Mobile */}
+
+            {/* Sidebar MObile */}
             <Offcanvas show={showMenu} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Menu</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="flex-column">
-                        <Nav.Item><Nav.Link href="#">Featured</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="#">Personal Care</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="#">Healthcare Conditions</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="#">Homeopathy</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="#">Vitamins & Nutrition</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="#">Healthcare Devices</Nav.Link></Nav.Item>
-                        <Nav.Item><Nav.Link href="#">Ayurvedic Products</Nav.Link></Nav.Item>
+                        {maniCategory?.map((item) => (
+                            <Accordion key={item.id} flush>
+                                <Accordion.Item eventKey={item.id.toString()}>
+                                    <Accordion.Header>{item.name}</Accordion.Header>
+                                    <Accordion.Body>
+                                        {item.sub_categories?.map((subItem) => (
+                                            <div key={subItem.id}>
+                                                <Link
+                                                    to="/product"
+                                                    onClick={() => {
+                                                        saveSubCateegoryKey(subItem.id);
+                                                        handleClose();
+                                                    }}
+                                                    className="d-block mb-2 text-decoration-none"
+                                                >
+                                                    {subItem.name}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>
+                        ))}
                     </Nav>
                 </Offcanvas.Body>
+
             </Offcanvas>
 
+
+
             {/* Bottom Navbar (Desktop only) */}
+
             <Nav className="justify-content-center border-top py-2 d-none d-md-flex">
-                <Nav.Item><Nav.Link href="#" as={Link} to="/product">Featured</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="#" as={Link} to="/product">Personal Care</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="#" as={Link} to="/product">Healthcare Conditions</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="#" as={Link} to="/product">Homeopathy</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="#" as={Link} to="/product">Vitamins & Nutrition</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link href="#" as={Link} to="/product">Healthcare Devices</Nav.Link></Nav.Item>
-                <Nav.Item><Nav.Link as={Link} to="/product">Ayurvedic Products</Nav.Link></Nav.Item>
+                {
+                    maniCategory?.map((item, key) => (
+                        <Nav.Item key={item.id}>
+                            <NavDropdown title={item.name} id={`nav-dropdown-${item.id}`}>
+                                {item.sub_categories?.map((subItem) => (
+                                    <NavDropdown.Item
+                                        key={subItem.id}
+                                        as={Link}
+                                        to="/product"
+                                        onClick={() => saveSubCateegoryKey(subItem.id)}
+                                    >
+                                        {subItem.name}
+                                    </NavDropdown.Item>
+                                ))}
+                            </NavDropdown>
+                        </Nav.Item>
+                    ))
+                }
             </Nav>
         </header>
     )

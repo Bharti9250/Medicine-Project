@@ -9,6 +9,7 @@ import LoginPage from './components/Login/LoginPage';
 import Footer from './components/Footer';
 import CheckoutPage from './components/cartPage/CheckoutPage';
 import axios from "axios";
+import Relatedproduct from "./components/Productdetailpage/Relatedproduct";
 
 
 const App = () => {
@@ -43,11 +44,12 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/Product' element={<Product />}></Route>
-        <Route path='/Product/:id' element={<Singleproduct />}></Route>
+        <Route path='/Product/:id' element={<Singleproduct/>}></Route>
         <Route path='/cart' element={<Cart />} />
         <Route path='/LoginPage' element={<LoginPage />} />
         <Route path='/CheckoutPage' element={<CheckoutPage   geoLocation={geolocation}/>} />
       </Routes>
+       {/* <Relatedproduct /> */}
       <Footer></Footer>
     </BrowserRouter>
   )

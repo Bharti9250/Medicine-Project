@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import CartItem from '../components/cartPage/CartItem';
 import { useCart } from '../context/Cartcontext';
 import { Link } from 'react-router-dom';
+import Relatedproduct from '../components/Productdetailpage/Relatedproduct'
 
 function Cart() {
     const { cartItem, removeFromCart, updateQuantity, TotalCartPrice } = useCart();
@@ -67,6 +68,8 @@ function Cart() {
                             <button className='btn w-100' style={{ backgroundColor: "#198754", color: "#fff" }}>CheckOut</button>
                         </Link>
                     </div>
+
+                    <Relatedproduct />
                 </Container>
             ) : (
                 <div className="text-center my-5">

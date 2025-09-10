@@ -26,13 +26,13 @@ const Homebanner = () => {
                         </div>
                     </div>
                 </div>
-                <div className='col-md-6'>
+                <div className='col-md-6 col-12'>
                     <div className='row Homebanner'>
-                        <div className='col-md-6 Homebannergroup'>
+                        <div className='col-md-6 col-6 Homebannergroup'>
                             <div className='' style={{ width: "100%" }}><img style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "20px" }} src="/Img/healthImg1.png" alt="img" /></div>
                             <div className='mt-4' style={{ width: "100%" }}><img style={{ width: "100%", height: "100%", objectFit: "cover" }} src="/Img/google.png" alt="img" /></div>
                         </div>
-                        <div className='col-md-6 Homebannergroup '>
+                        <div className='col-md-6 col-6 Homebannergroup '>
                             <div className='' style={{ width: "100%" }}><img style={{ width: "100%", height: "100%", objectFit: "cover" }} src="/Img/smile.png" alt="img" /></div>
                             <div className='mt-4' style={{ width: "100%" }}><img style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "20px" }} src="/Img/healthImg.png" alt="img" /></div>
                         </div>
