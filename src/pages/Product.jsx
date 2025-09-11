@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from '../context/Cartcontext';
 
 const Product = () => {
-  const { productData, fetchMainCategoryById } = getAllApiData();
+  const { productData, fetchMainCategoryById} = getAllApiData();
   const {addToCart, cartItem} = useCart();
 
 
@@ -27,11 +27,12 @@ const Product = () => {
 
   const navigate = useNavigate()
 
-  // const [isOpen, setIsOpen] = useState(true);       // for Category toggle
-  const [isFilterOpen, setIsFilterOpen] = useState(true); // for whole Filters toggle
+ // Filters state
+const [isOpen, setIsOpen] = useState(true); // default open for category toggle
+const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // desktop open, mobile closed
 
-  // Filters state
-  const [isOpen, setIsOpen] = useState(true); // default open
+
+  
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [brandFilter, setBrandFilter] = useState([]);
   const [priceFilter, setPriceFilter] = useState([50, 7000]);
@@ -218,10 +219,10 @@ const Product = () => {
 
         {/* Products Grid */}
         <Col md={9}>
-          <div className="ProductList mb-5">
+          <div className="ProductList mb-5 mt-4">
             <Row>
               {currentProducts?.map((item) => (
-                <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-4" style={{ padding: "0px 10px" }}>
+                <Col key={item.id} xs={6} sm={6} md={4} lg={4} className="mb-4" style={{ padding: "0px 10px" }}>
                   <Card className="ProductListCard h-100">
                     <div className="ProductListImg">
                       <div className="WishlistTag" onClick={AddToWishlist}><FaRegHeart /></div>

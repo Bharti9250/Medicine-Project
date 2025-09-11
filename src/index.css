@@ -245,11 +245,14 @@
 /* //Home Banner Section */
 
 .HomebannerLeftSection button {
-  background: #0EDBAA;
+  background: #fff;
+  border: 1px solid #000;
+
+  /* background: #0EDBAA; */
   padding: 10px 30px;
   border-radius: 50px;
   font-weight: 700;
-  color: #0552aa;
+  color: #000000;
   margin-bottom: 20px;
 }
 
@@ -280,6 +283,8 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  position: relative;
+    z-index: 3;
 
 }
 
@@ -868,6 +873,13 @@ footer ul li a {
 
   .HomebannerSection .Homebanner{
     margin-top: 20px;
+  }
+
+
+  .ProductList .ProductCardBody .ProductBtn{
+    display: grid !important;
+    gap: 10px !important;
+      grid-template-columns: 1fr
   }
 
 }

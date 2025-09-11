@@ -7,16 +7,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { getAllApiData } from "../context/Datacontext";
+import { useNavigate } from "react-router-dom";
 
-const categories = [
-    "Vitamins & Nutrition",
-    "Gynecology",
-    "Nephrology",
-    "Orthopedics",
-    "Pediatrics",
-    "Gastroenterology",
-    "Urology",
-];
 
 const products = [
     { id: 1, title: "Quality Health Australia Vitamin D & Calcium", rating: 4.5, category: "Vitamins & Nutrition" },
@@ -36,15 +28,26 @@ const products = [
 ];
 
 const Babycare = () => {
-    const [activeTab, setActiveTab] = useState("Vitamins & Nutrition");
-    const { subCategory, fetchSubCategory } = getAllApiData();
+     const [activeTab, setActiveTab] = useState("Vitamins & Nutrition");
+    // const { subCategory, fetchSubCategory } = getAllApiData();
+    const { maniCategory, fetchMailCategory, setSelectedSubCategoryId } = getAllApiData();
 
-     useEffect(() => {
-        fetchSubCategory();         
-      }, []);
+    useEffect(() => {
+        fetchMailCategory();
+    }, []);
 
-      console.log(subCategory,"subCategorysubCategorysubCategorysubCategory");
-      
+
+    useEffect(() => {
+        if (maniCategory && maniCategory.length > 0) {
+            setActiveTab(maniCategory[0].name);
+        }
+    }, [maniCategory]);
+
+
+     const navigate = useNavigate()
+
+    console.log(maniCategory, "subCategorysubCategorysubCategorysubCategory");
+
 
 
     // Slider settings for mobile
@@ -82,7 +85,6 @@ const Babycare = () => {
             },
         ],
     };
-
     return (
         <div className="container TrendingProducts">
             {/* Header */}
@@ -99,14 +101,13 @@ const Babycare = () => {
                     {/* Tab Nav */}
                     <div className="d-none d-md-block">
                         <Nav variant="pills" className="mb-5 TrendingProductsTab flex-wrap">
-                            {categories.map((cat) => (
-                                <Nav.Item key={cat}>
+                            {maniCategory.map((cat) => (
+                                <Nav.Item key={cat.id}>
                                     <Nav.Link
-                                        className={`TrendingProductsCategory ${activeTab === cat ? "active" : ""}`}
-                                        eventKey={cat}
-                                        onClick={() => setActiveTab(cat)}
+                                        className={`TrendingProductsCategory ${activeTab === cat.name ? "active" : ""}`}
+                                        onClick={() => setActiveTab(cat.name)}
                                     >
-                                        {cat}
+                                        {cat.name}
                                     </Nav.Link>
                                 </Nav.Item>
                             ))}
@@ -117,14 +118,13 @@ const Babycare = () => {
                     {/* Mobile Tabs Slider */}
                     <div className="MobileViewTab d-md-none mb-5">
                         <Slider {...mobileTabSettings}>
-                            {categories.map((cat) => (
-                                <div key={cat} className={`px-1 MobileViewTabSelect ${activeTab === cat ? "active" : ""}`} >
+                            {maniCategory.map((cat) => (
+                                <div key={cat.id} className={`px-1 MobileViewTabSelect ${activeTab === cat.name ? "active" : ""}`} >
                                     <Nav.Link
-                                        // className={`TrendingProductsCategory ${activeTab === cat ? "active" : ""}`}
-                                        eventKey={cat}
-                                        onClick={() => setActiveTab(cat)}
+                                        eventKey={cat.name}
+                                        onClick={() => setActiveTab(cat.name)}
                                     >
-                                        {cat}
+                                        {cat.name}
                                     </Nav.Link>
                                 </div>
                             ))}
@@ -133,12 +133,11 @@ const Babycare = () => {
 
                     {/* Tab Content */}
                     <Tab.Content className="TrendingProductsList">
-                        {categories.map((cat) => (
-                            <Tab.Pane key={cat} eventKey={cat}>
+                        {maniCategory.map((cat) => (
+                            <Tab.Pane key={cat.id} eventKey={cat.name}>
                                 {/* Desktop Grid */}
                                 <Row className="d-none d-md-flex">
-                                    {products
-                                        .filter((item) => item.category === cat)
+                                    {cat.sub_categories
                                         .slice(0, 8)
                                         .map((item) => (
                                             <Col
@@ -150,14 +149,14 @@ const Babycare = () => {
                                                 className="mb-4 px-2"
                                                 style={{ marginTop: "60px" }}
                                             >
-                                                <Card className="TrendingProductsCard">
-                                                    <div className="TrendingProductsCardImg" style={{ cursor: "pointer" }}>
-                                                        <Link to="/product"><Card.Img variant="top" src="/Img/productitem.png" /></Link>
+                                                <Card className="TrendingProductsCard" onClick={() => navigate(`/product/${item.id}`)} style={{ cursor: "pointer" }}>
+                                                    <div  className="TrendingProductsCardImg" >
+                                                        <Link  ><Card.Img variant="top" src={item.image || "/Img/productitem.png"} /></Link>
                                                     </div>
                                                     <Card.Body className="TrendingProductsCardContent">
                                                         <div className="CardContentHeading d-flex justify-content-between">
-                                                            <h2>{item.category}</h2>
-                                                            <div className="d-flex align-items-center">
+                                                            <h2>{item.name}</h2>
+                                                            {/* <div className="d-flex align-items-center">
                                                                 <IoMdStar
                                                                     style={{
                                                                         color: "#F6E200",
@@ -165,11 +164,11 @@ const Babycare = () => {
                                                                         marginRight: "5px",
                                                                     }}
                                                                 />
-                                                                <p className="mb-0">({item.rating})</p>
-                                                            </div>
+                                                                <p className="mb-0">({item.name})</p>
+                                                            </div> */}
                                                         </div>
                                                         <Card.Title className="CardContentTitle mb-0">
-                                                            {item.title}
+                                                            {item.name}
                                                         </Card.Title>
                                                     </Card.Body>
                                                 </Card>
@@ -181,11 +180,11 @@ const Babycare = () => {
                                 <div className="d-md-none">
                                     <Slider {...sliderSettings}>
                                         {products
-                                            .filter((item) => item.category === cat)
+                                            .filter((item) => item.category === cat.name)
                                             .slice(0, 8)
                                             .map((item) => (
                                                 <div key={item.id} className="px-2 pt-4" style={{ width: "300px" }}>
-                                                    <Card className="TrendingProductsCard">
+                                                    <Card className="TrendingProductsCard" onClick={() => navigate(`/product/${item.id}`)} >
                                                         <div className="TrendingProductsCardImg">
                                                             <Card.Img variant="top" src="/Img/productitem.png" />
                                                         </div>
@@ -215,6 +214,7 @@ const Babycare = () => {
                             </Tab.Pane>
                         ))}
                     </Tab.Content>
+
                 </Tab.Container>
             </div>
         </div>

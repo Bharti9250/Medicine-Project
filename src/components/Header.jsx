@@ -200,6 +200,7 @@ const Header = () => {
                                                         handleClose();
                                                     }}
                                                     className="d-block mb-2 text-decoration-none"
+                                                    style={{color:"#000"}}
                                                 >
                                                     {subItem.name}
                                                 </Link>
