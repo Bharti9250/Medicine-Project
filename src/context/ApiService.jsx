@@ -4,11 +4,23 @@ const API_URL = "https://medilab.instaviv.com/api"
 const reqHeader = { "Content-Type": "application/json" };
 const reqHeader_NoAuth = { "Content-Type": "application/json", "No-Auth": "True" };
 
+
+
+
+//--------------------------------------- ProduCt APIES ----------------------------------------//
+
 // Example APIs
-// export const loginUser = (data) =>
-//   axios.post(`${API_URL}/Authenticate/login`, data, { headers: reqHeader_NoAuth });
+export const UserRegistration = (data) =>
+  axios.post(`${API_URL}/accounts/register/`, data, { headers: reqHeader_NoAuth });
+
+export const optSend = (data) =>
+    axios.post(`${API_URL}/accounts/register/`, data, { headers: reqHeader_NoAuth });
+
+export const optVerify = (data) =>
+  axios.post(`${API_URL}/accounts/register/`, data, { headers: reqHeader_NoAuth });
 
 
+//--------------------------------------- ProduCt APIES ----------------------------------------//
 export const Maincategories = () => 
     axios.get(`${API_URL}/store/categories/`,{reqHeader_NoAuth})
 

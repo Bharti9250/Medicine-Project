@@ -1,13 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect} from "react";
 import { createContext } from "react";
 import axios from "axios";
-import { getSubCategories, Maincategories, getCategoriesProduct } from './ApiService';
+import { getSubCategories, Maincategories, getCategoriesProduct, UserRegistration } from './ApiService';
 
 
 export const Datacontext = createContext(null);
 
 export const DataProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
+
+    const [registrationUser, setRegistrationUser] = useState([]);
+    const [getUserRegistrationFormData, setUserRegistrationFormData] = useState([]);
+
+
     const [subCategory, setSubCategory] = useState([]);
     const [maniCategory, setCategory] = useState([]);
     //fetch SubCategory Id
@@ -15,11 +20,52 @@ export const DataProvider = ({ children }) => {
     const [productData, SetCategoryById] = useState([]);
     const [carouselData, setCarouselData] = useState();
     const [categoryData, setCategoryData] = useState();
-    // const [productData, setAllProductData] = useState();
-
-
 
     console.log(selectedSubCategoryId, "selectedSubCategoryId");
+
+
+
+
+    useEffect(() => {
+        if (getUserRegistrationFormData && Object.keys(getUserRegistrationFormData).length > 0) {
+            fetchRegistrationUser();
+        }
+    }, [getUserRegistrationFormData]);
+
+
+
+
+    // ---------------------- AUth API ---------------------------//
+    const fetchRegistrationUser = async () => {
+        debugger
+        try {
+            setLoading(true);
+            console.log("login");
+
+            console.log(getUserRegistrationFormData, "PI");
+
+            const res = await UserRegistration(getUserRegistrationFormData);
+
+            setRegistrationUser(res.data);
+            console.log(res.data, "on mobile registration");
+
+        } catch (error) {
+            console.error("Error fetching User:", error.response?.data || error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+
+    console.log(getUserRegistrationFormData, "datacontect");
+
+
+
+
+
+
+
+
 
 
 
@@ -50,7 +96,7 @@ export const DataProvider = ({ children }) => {
     }
 
 
-  // Fetch fetchSubCategory
+    // Fetch fetchSubCategory
     const fetchSubCategory = async () => {
         try {
             const res = await getSubCategories();
@@ -62,21 +108,6 @@ export const DataProvider = ({ children }) => {
             console.error("Error fetching blogs:", err);
         }
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
 
 
     // fetch Carousel API
@@ -124,7 +155,8 @@ export const DataProvider = ({ children }) => {
             subCategory,
             maniCategory,
             selectedSubCategoryId,
-            // mainCategoryByid,
+            registrationUser,
+
             fetchCarouselData,
             fetchCategoriesData,
             fetchAllProductData,
@@ -132,7 +164,9 @@ export const DataProvider = ({ children }) => {
             fetchMailCategory,
             setSelectedSubCategoryId,
             fetchMainCategoryById,
-            loading 
+            fetchRegistrationUser,
+            setUserRegistrationFormData,
+            loading
 
         }}>
         {children}
