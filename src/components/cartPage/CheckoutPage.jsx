@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
-import { useCart } from '../../context/Cartcontext'
+import { useCart } from '../../context/Cartcontext';
+import { Link, Links } from "react-router-dom";
 
 const CheckoutPage = ({ geoLocation }) => {
     const { cartItem ,TotalCartPrice} = useCart();
@@ -145,7 +146,7 @@ const CheckoutPage = ({ geoLocation }) => {
                         </Form.Group>
 
                         <div className="d-grid">
-                            <Button  type="submit" className="" style={{backgroundColor:"#127E64", color:"#fff", border:"none"}}>
+                            <Button as={Link} to="/PaymentPage"  type="submit" className="" style={{backgroundColor:"#127E64", color:"#fff", border:"none"}}>
                                 Continue
                             </Button>
                         </div>

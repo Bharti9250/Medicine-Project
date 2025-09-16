@@ -1,17 +1,20 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { getAllApiData } from '../../context/Datacontext';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { IoCartOutline } from "react-icons/io5";
-import Relatedproduct from "./Relatedproduct"
+import Relatedproduct from "./Relatedproduct";
+import { getAllApiData } from '../../context/Datacontext';
+
 
 const Singleproduct = () => {
+    const { ProductJsonData, fetchAllProductData} = getAllApiData();
     const params = useParams();
-    // console.log(params,"params");
-
+    
     const [product, setProduct] = useState(null);
 
 
+    console.log(ProductJsonData,"jsonProductJsonDataProductJsonData");
+    
 
 
     const getsingleProduct = async () => {
@@ -28,6 +31,7 @@ const Singleproduct = () => {
 
     useEffect(() => {
         getsingleProduct();
+        fetchAllProductData();
     }, [params.id]);
 
 
@@ -93,9 +97,9 @@ const Singleproduct = () => {
                 </div>
             </div>
 
-            <div className="mt-4">
+            {/* <div className="mt-4">
                 <Relatedproduct />
-            </div>
+            </div> */}
         </div>
     )
 }

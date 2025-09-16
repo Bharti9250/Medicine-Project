@@ -10,8 +10,9 @@ import Footer from './components/Footer';
 import CheckoutPage from './components/cartPage/CheckoutPage';
 import axios from "axios";
 import Relatedproduct from "./components/Productdetailpage/Relatedproduct";
-
-
+import Wishlist from './pages/Wishlist';
+import PaymentPage from './components/cartPage/PaymentPage'
+ 
 const App = () => {
   const [geolocation, setGeoLocation] = useState(null)
 
@@ -48,6 +49,9 @@ const App = () => {
         <Route path='/cart' element={<Cart />} />
         <Route path='/LoginPage' element={<LoginPage />} />
         <Route path='/CheckoutPage' element={<CheckoutPage   geoLocation={geolocation}/>} />
+        <Route path='/Wishlist' element={<Wishlist />} />
+        <Route path='/PaymentPage' element={<PaymentPage />} />
+      
       </Routes>
        {/* <Relatedproduct /> */}
       <Footer></Footer>

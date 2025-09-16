@@ -4,64 +4,64 @@ import { Container, Row, Col, Card, Form, Pagination } from "react-bootstrap";
 import { FaArrowRight } from "react-icons/fa6";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { getAllApiData } from '../context/Datacontext';
-import { FaRegHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useCart } from '../context/Cartcontext';
+import { Link } from "react-router-dom";
+import { useWishlist } from '../context/Wishlistcontext';
 
 const Product = () => {
-  const { productData, fetchMainCategoryById} = getAllApiData();
-  const {addToCart, cartItem} = useCart();
+  const { productData, fetchMainCategoryById, ProductJsonData, fetchAllProductData } = getAllApiData();
+  const { addToCart, cartItem } = useCart();
+  const { AddToWishlist, wishListItem } = useWishlist();
+
 
 
   useEffect(() => {
     fetchMainCategoryById();
+    fetchAllProductData();
   }, []);
 
 
-  console.log(productData,"Bahrti");
-  
-
-
+  // console.log(ProductJsonData, "Bahrti");
 
   // navigation to single product
-
   const navigate = useNavigate()
 
- // Filters state
-const [isOpen, setIsOpen] = useState(true); // default open for category toggle
-const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // desktop open, mobile closed
+  // Filters state
+  const [isOpen, setIsOpen] = useState(true); 
+  const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); 
 
 
-  
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [brandFilter, setBrandFilter] = useState([]);
   const [priceFilter, setPriceFilter] = useState([50, 7000]);
 
-  // ✅ Extract unique categories from API data
+  // Extract unique categories from API data
   const categories = useMemo(() => {
-    if (!productData) return [];
-    const unique = [...new Set(productData.map((item) => item.category).filter(Boolean))];
+    if (!ProductJsonData) return [];
+    const unique = [...new Set(ProductJsonData.map((item) => item.category).filter(Boolean))];
     return unique;
-  }, [productData]);
+  }, [ProductJsonData]);
 
-  // ✅ Extract unique brands from API data
+  // Extract unique brands from API data
   const brands = useMemo(() => {
-    if (!productData) return [];
-    const unique = [...new Set(productData.map((item) => item.brand).filter(Boolean))];
+    if (!ProductJsonData) return [];
+    const unique = [...new Set(ProductJsonData.map((item) => item.brand).filter(Boolean))];
     return unique;
-  }, [productData]);
+  }, [ProductJsonData]);
 
-  // ✅ Check if any filter is applied
+  //  Check if any filter is applied
   categoryFilter.length > 0 ||
     brandFilter.length > 0 ||
     priceFilter[0] !== 50 ||
     priceFilter[1] !== 7000;
 
-  // ✅ Products per page depends on filter
+  //  Products per page depends on filter
   const productsPerPage = 9
 
   // Apply filters
-  const filteredProducts = (productData || []).filter((item) => {
+  const filteredProducts = (ProductJsonData || []).filter((item) => {
     if (!item) return false;
 
     const categoryMatch = categoryFilter.length === 0 || categoryFilter.includes(item?.category);
@@ -82,10 +82,7 @@ const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // d
 
 
 
-  function AddToWishlist() {
-    console.log("Add");
 
-  }
 
 
   const truncateText = (text, wordLimit) => {
@@ -119,6 +116,9 @@ const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // d
           </div>
         </div>
       </div>
+
+
+
 
       <Row>
         {/* Sidebar Filters */}
@@ -168,6 +168,7 @@ const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // d
                         key={cat}
                         type="checkbox"
                         label={cat}
+                        checked={categoryFilter.includes(cat)}
                         onChange={(e) => {
                           if (e.target.checked) {
                             setCategoryFilter([...categoryFilter, cat]);
@@ -190,6 +191,7 @@ const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // d
                     key={brand}
                     type="checkbox"
                     label={brand}
+                    checked={brandFilter.includes(brand)}
                     onChange={(e) => {
                       if (e.target.checked) {
                         setBrandFilter([...brandFilter, brand]);
@@ -208,6 +210,7 @@ const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // d
                 <Form.Range
                   min={50}
                   max={7000}
+                  value={priceFilter[1]}
                   defaultValue={priceFilter[1]}
                   onChange={(e) => setPriceFilter([50, parseInt(e.target.value)])}
                 />
@@ -220,13 +223,20 @@ const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // d
         {/* Products Grid */}
         <Col md={9}>
           <div className="ProductList mb-5 mt-4">
-            <Row>
+            <Row className="w-100">
               {currentProducts?.map((item) => (
                 <Col key={item.id} xs={6} sm={6} md={4} lg={4} className="mb-4" style={{ padding: "0px 10px" }}>
                   <Card className="ProductListCard h-100">
                     <div className="ProductListImg">
-                      <div className="WishlistTag" onClick={AddToWishlist}><FaRegHeart /></div>
-                      <div className="" onClick={() => navigate(`/product/${item.id}`)} style={{ width: "200px", cursor:"pointer" }}><Card.Img variant="top" src={item.image || "/Img/productitem.png"} /></div>
+                      <div className="WishlistTag" onClick={() => AddToWishlist(item)}>
+                        <FaHeart
+                          style={{
+                            color: wishListItem.some((i) => i.id === item.id) ? "red" : "gray",
+                            cursor: "pointer",
+                          }}
+                        />
+                      </div>
+                      <div className="" onClick={() => navigate(`/product/${item.id}`)} style={{ width: "200px", cursor: "pointer" }}><Card.Img variant="top" src={item.image || "/Img/productitem.png"} /></div>
                     </div>
                     <Card.Body className="ProductCardBody">
                       <div className="productTitle">
@@ -235,8 +245,10 @@ const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // d
                       </div>
                       <small className="text" style={{ color: "#98A2B3" }}>{truncateText(item?.description, 10)}</small>
                       <div className="ProductBtn d-flex">
-                        <button className="btn BuyBtn" onClick={()=>addToCart(item)}>Buy Now</button>
-                        <button className="btn CartToBtn" onClick={()=>addToCart(item)} >Add To Cart</button>
+                        <Link to="/CheckoutPage">
+                          <button className="btn BuyBtn" onClick={() => addToCart(item)}>Buy Now</button>
+                        </Link>
+                        <button className="btn CartToBtn" onClick={() => addToCart(item)} >Add To Cart</button>
                       </div>
                     </Card.Body>
                   </Card>
@@ -246,13 +258,15 @@ const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // d
           </div>
 
           {/* Pagination */}
-          <div className="d-flex justify-content-center mt-4">
+          <div className="ProductPAgePAgeination d-flex justify-content-center mt-4">
             <Pagination>
               {/* Previous Button */}
               <Pagination.Prev
                 disabled={currentPage === 1}
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              />
+              >
+                Previous
+              </Pagination.Prev>
 
               {/* Page Numbers */}
               {[...Array(totalPages).keys()].map((page) => (
@@ -269,7 +283,9 @@ const [isFilterOpen, setIsFilterOpen] = useState(window.innerWidth >= 768); // d
               <Pagination.Next
                 disabled={currentPage === totalPages}
                 onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-              />
+              >
+                Next
+              </Pagination.Next>
             </Pagination>
           </div>
 

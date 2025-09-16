@@ -13,7 +13,7 @@ import { getAllApiData } from '../context/Datacontext'
 const Header = () => {
     const { maniCategory, fetchMailCategory, setSelectedSubCategoryId } = getAllApiData();
 
-    console.log(maniCategory, "productDataproductDataproductDataproductData");
+    // console.log(maniCategory, "productDataproductDataproductDataproductData");
 
     const { cartItem } = useCart();
     const [showMenu, setShowMenu] = useState(false);
@@ -21,6 +21,7 @@ const Header = () => {
 
     const handleClose = () => setShowMenu(false);
     const handleShow = () => setShowMenu(true);
+
 
 
     const getLocation = async () => {
@@ -57,7 +58,7 @@ const Header = () => {
 
     function saveSubCateegoryKey(id) {
         setSelectedSubCategoryId(id)
-        console.log(id, "isfuhf");
+        // console.log(id, "isfuhf");
 
     }
 
@@ -70,10 +71,11 @@ const Header = () => {
     }, []);
 
     return (
-        
+
         <header className="HaederSection border-bottom bg-white shadow-sm sticky-top">
             <Container className="py-2">
                 {/* Desktop Header */}
+
                 <Row className="align-items-center d-none d-md-flex">
 
                     {/* Location + Search */}
@@ -105,9 +107,12 @@ const Header = () => {
 
                     {/* Right Side */}
                     <Col md={6} xs="auto" className="d-flex align-items-center     justify-content-end">
-                        <div className="text-danger me-3 d-flex align-items-center">
-                            <FaGift className="me-1" /> Offer
-                        </div>
+
+                        <Link to={"/Wishlist"}>
+                            <div className="text-danger me-3 d-flex align-items-center">
+                                <FaGift className="me-1" /> Wishlist
+                            </div>
+                        </Link>
 
                         <Link to="/cart" style={{ textDecoration: "none" }}>
                             <div className="me-3 d-flex align-items-center text-dark">
@@ -200,7 +205,7 @@ const Header = () => {
                                                         handleClose();
                                                     }}
                                                     className="d-block mb-2 text-decoration-none"
-                                                    style={{color:"#000"}}
+                                                    style={{ color: "#000" }}
                                                 >
                                                     {subItem.name}
                                                 </Link>
@@ -217,7 +222,7 @@ const Header = () => {
 
 
 
-            {/* Bottom Navbar (Desktop only) */}
+            {/* Bottom Navbar Desktop */}
 
             <Nav className="justify-content-center border-top py-2 d-none d-md-flex">
                 {

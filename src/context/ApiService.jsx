@@ -7,11 +7,20 @@ const reqHeader_NoAuth = { "Content-Type": "application/json", "No-Auth": "True"
 
 
 
-//--------------------------------------- ProduCt APIES ----------------------------------------//
+// --------------------- Fake APIs ---------------------//
+
+export const fakeProfuctApi = () =>{
+   return axios.get(`https://fakestoreapi.com/products`,{reqHeader_NoAuth})
+}
+
+// --------------------- Fake APIs ---------------------//
+
+
+//--------------------------------------- Registration APIES ----------------------------------------//
 
 // Example APIs
 export const UserRegistration = (data) =>
-  axios.post(`${API_URL}/accounts/register/`, data, { headers: reqHeader_NoAuth });
+  axios.post(`${API_URL}/otp/send-otp/`, data, { headers: reqHeader_NoAuth });
 
 export const optSend = (data) =>
     axios.post(`${API_URL}/accounts/register/`, data, { headers: reqHeader_NoAuth });

@@ -7,11 +7,18 @@ import { getSubCategories, Maincategories, getCategoriesProduct, UserRegistratio
 export const Datacontext = createContext(null);
 
 export const DataProvider = ({ children }) => {
+
+    //Fake APIES 
+    const [fakeAllProductAPi, setFakeApi] = useState([]);
+
+
+
+    //Fake APIES 
+
     const [loading, setLoading] = useState(true);
 
     const [registrationUser, setRegistrationUser] = useState([]);
     const [getUserRegistrationFormData, setUserRegistrationFormData] = useState([]);
-
 
     const [subCategory, setSubCategory] = useState([]);
     const [maniCategory, setCategory] = useState([]);
@@ -21,9 +28,10 @@ export const DataProvider = ({ children }) => {
     const [carouselData, setCarouselData] = useState();
     const [categoryData, setCategoryData] = useState();
 
-    console.log(selectedSubCategoryId, "selectedSubCategoryId");
 
-
+    //json Data
+    const [ProductJsonData, setAllProductData] = useState([])
+    
 
 
     useEffect(() => {
@@ -32,13 +40,27 @@ export const DataProvider = ({ children }) => {
         }
     }, [getUserRegistrationFormData]);
 
+    // ---------------------- Fake APIs ---------------------------//
+        // const fetchFakeProductListApi = async () =>{
+        //     try {
+        //         const res = await fakeProfuctApi();
+        //         setFakeApi(res?.data)
+        //         console.log(res,"fakeApis");
+                
+        //     } catch (error) {
+        //         console.log(error);
+                
+        //     }
+        // }
+
+
+    // ----------------------  Fake APIs  ---------------------------//
 
 
 
     // ---------------------- AUth API ---------------------------//
     const fetchRegistrationUser = async () => {
-        debugger
-        try {
+            try {
             setLoading(true);
             console.log("login");
 
@@ -57,19 +79,8 @@ export const DataProvider = ({ children }) => {
     };
 
 
-    console.log(getUserRegistrationFormData, "datacontect");
 
-
-
-
-
-
-
-
-
-
-
-
+    // ---------------------- Product APIs ---------------------------//
     //Main Category
     const fetchMailCategory = async () => {
         try {
@@ -108,6 +119,10 @@ export const DataProvider = ({ children }) => {
             console.error("Error fetching blogs:", err);
         }
     };
+
+
+
+    //JSON DATA
 
 
     // fetch Carousel API
@@ -156,17 +171,22 @@ export const DataProvider = ({ children }) => {
             maniCategory,
             selectedSubCategoryId,
             registrationUser,
-
+            
+            
             fetchCarouselData,
             fetchCategoriesData,
-            fetchAllProductData,
             fetchSubCategory,
             fetchMailCategory,
             setSelectedSubCategoryId,
             fetchMainCategoryById,
             fetchRegistrationUser,
             setUserRegistrationFormData,
-            loading
+            loading,
+            
+            //Json APIs Satrt Here
+            ProductJsonData,
+            fetchAllProductData,
+           
 
         }}>
         {children}

@@ -447,6 +447,33 @@
 }
 
 
+.ProductPAgePAgeination ul.pagination{
+  gap: 10px;
+}
+
+.ProductPAgePAgeination ul.pagination li a, .ProductPAgePAgeination ul.pagination li span{
+      color: #667085;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+.ProductPAgePAgeination ul.pagination li.active>.page-link, .page-link.active{
+    color: #667085;
+    border-radius: 6px;
+    background-color: #F1F5F9;
+    border: 1px solid #f1f5f9;
+}
+
+.ProductPAgePAgeination ul.pagination li.disabled>.page-link, .page-link.disabled{
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+
+
+
+
 
 
 
@@ -785,6 +812,20 @@ footer ul li a {
   .ProductList .ProductCardBody .ProductBtn .CartToBtn {
     width: 100%;
   }
+
+
+  .ProductList .ProductCardBody{
+    padding: 15px 5px;
+  }
+
+  .ProductList .ProductCardBody .productTitle{
+    display: block;
+  }
+
+
+
+
+
 
 
   .CartSectionBanner .CartView .CartViewTxt {
